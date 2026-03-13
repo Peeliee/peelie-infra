@@ -57,6 +57,8 @@ services:
     image: ${ECR_PUBLIC_REGISTRY}/${ECR_PUBLIC_REPOSITORY}:${AVATAR_TAG}
     container_name: peelie-worker
     command: ["python", "-m", "apps.worker.worker"]
+    healthcheck:
+      disable: true
     environment:
       DATABASE_URL: ${PY_DATABASE_URL}
       REDIS_URL: redis://redis:6379/0
